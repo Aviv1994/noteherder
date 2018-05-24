@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#000000">
@@ -33,5 +33,20 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    
+<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBt5rPSelfeulb2of5h6Rn55Cj997CRAVw",
+    authDomain: "noteherder-64a6a.firebaseapp.com",
+    databaseURL: "https://noteherder-64a6a.firebaseio.com",
+    projectId: "noteherder-64a6a",
+    storageBucket: "noteherder-64a6a.appspot.com",
+    messagingSenderId: "744301750487"
+  };
+  firebase.initializeApp(config);
+</script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
   </body>
 </html>
