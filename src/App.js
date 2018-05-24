@@ -1,42 +1,49 @@
 import React, { Component } from 'react'
 
 import './App.css'
+import { auth } from './base'
 import Main from './Main'
+import SignIn from './SignIn'
 
 class App extends Component {
+  state = {
+    uid: null,
+  }
+
+  componentDidMount() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.handleAuth(user)
+      } else {
+        this.signOut()
+      }
+    })
+  }
+
+  handleAuth = (user) => {
+    this.setState({ uid: user.uid })
+  }
+
+  signedIn = () => {
+    return this.state.uid
+  }
+
+  signOut = () => {
+    this.setState({ uid: null })
+    auth.signOut()
+  }
+
   render() {
     return (
       <div className="App">
-        <Main />
+        {
+          this.signedIn()
+            ? <Main signOut={this.signOut} />
+            : <SignIn handleAuth={this.handleAuth} />
+        }
       </div>
     )
   }
 }
-
-// componentWillMount() {
-//   localStorage.getItem('contacts') && this.setState({
-//     contacts: JSON.parse(localStorage.getItem('contacts')),
-//     isLoading: false
-//   })
-// }
-
-// componentDitMount(){
-//   if(!localStorage.getItem('contacts')){
-// this.fetchData();
-//   } else {
-// console.log('using data from localStorage.');
-//   }
-// }
-// fetchData() {-
-// }
-
-// componentWillUpdate(nextProps, nextState) {
-// localStorage.setItem('contacts', JSON.stringify(nextState.contacts));
-// localStorage.setItem('contactsDate', Date.now());
-// } 
-
-// render() {-
-// }
-
 
 export default App
